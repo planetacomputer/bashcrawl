@@ -75,7 +75,7 @@ if [ $RESP = "y" -o $RESP = "Y" ]; then
    read RESP
 
     if [ $RESP = "y" -o $RESP = "Y" ]; then
-        if grep -Po fish <<< $I; then
+        if grep --perl-regex --only-matching fish <<< $I; then
             echo "You toss the fish at the penguin,"
             echo "which catches the fish mid-air and"
             echo "gobbles it down."

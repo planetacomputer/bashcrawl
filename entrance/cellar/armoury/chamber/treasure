@@ -13,7 +13,7 @@
 # We're happy to provide hints.
 # 
 echo
-if ! grep -Po coins <<< $I &> /dev/null; then
+if ! grep --perl-regex --only-matching coins <<< $I &> /dev/null; then
     echo "You have found a stash of **coins**!"
     echo "They are old and worn with age,"
     echo "but they still gleam in the magical light"

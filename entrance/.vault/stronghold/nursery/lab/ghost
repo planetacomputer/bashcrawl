@@ -59,7 +59,7 @@ resolve() {
        echo "A hit! A palpable hit!"
        echo "You have slain the spirit of the evil wizard."
        echo '#!/bin/bash
-            if ! grep -Po emerald <<< $I &> /dev/null; then
+            if ! grep --perl-regex --only-matching emerald <<< $I &> /dev/null; then
                 echo "You have found an *emerald*!"
                 echo "Add it to your inventory."
             else
@@ -67,7 +67,7 @@ resolve() {
             fi' > treasure
        chmod +x treasure
        echo '#!/bin/bash
-             if ! grep -Po platinum <<< $I &> /dev/null; then
+             if ! grep --perl-regex --only-matching platinum <<< $I &> /dev/null; then
                  echo "You have found a sack full of *platinum* coins!"
                  echo "Add it to your inventory." 
              else
