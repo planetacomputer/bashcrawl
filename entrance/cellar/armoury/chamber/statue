@@ -61,7 +61,7 @@ if [ $RESP = "y" -o $RESP = "Y" ]; then
    echo "Do you have a sword?"
    read RESP
    if [ $RESP = "y" -o $RESP = "Y" ]; then
-       if grep --perl-regex --only-matching 'sword' <<< $I &> /dev/null; then
+       if grep  --only-matching 'sword' <<< $I &> /dev/null; then
            echo "You slay the statue!"
            mv statue pieces
        else

@@ -13,7 +13,7 @@
 # We're happy to provide hints.
 #
 
-if ! grep --perl-regex --only-matching amulet <<< $I &> /dev/null; then
+if ! grep  --only-matching amulet <<< $I &> /dev/null; then
     printf "\n"
     echo "You have found an emerald **amulet**!"
     printf "\n"
