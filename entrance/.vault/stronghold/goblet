@@ -13,10 +13,10 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 # 
-if [[ -e goblet-light && -e goblet-dark ]]; then
-   echo "You have united the goblet's ethereal forms."
-   echo "Add the goblet to your inventory."
-   exit
+if [[ -e orb1 && -e orb2 && -e orb3 ]]; then
+    echo "You have freed the goblet's material form."
+    echo "Add 'goblet' to your inventory."
+    exit
 else 
     echo "You try to grasp the faintly glowing goblet,"
     echo "but it passes through your fingers."
@@ -36,7 +36,8 @@ if [ $RESP = "y" -o $RESP = "Y" ]; then
  if [ $RESP = "y" -o $RESP = "Y" ]; then
      echo "The cp command copies one file to another."
      echo "Run this command:"
-     echo "$ cp goblet-light goblet-dark"
+     echo "$ cp orb1 orb2"
+     echo "$ cp orb1 orb3"
      printf "\n"
      echo "And then run this goblet script again"
      echo "for confirmation."
