@@ -56,7 +56,7 @@ if [ $RESP = "y" -o $RESP = "Y" ]; then
         gameover
         exit 1
    fi
-   sed -i 's/coins/diamonds/g' ./treasure
+   perl -pe 's/coins/diamonds/' -i ./treasure
    printf "\n"
    echo "Do you have a sword?"
    read RESP
