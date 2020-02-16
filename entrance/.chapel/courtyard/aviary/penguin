@@ -33,7 +33,7 @@ gameover () {
 penguin_bite () {
 	echo "The penguin gnaws at your Bag of Holding, hoping for a morsel."
 	echo "Finding nothing, it takes a nip at your hand"
-	echo 'for 1 point of damage. (HP="let HP--").'
+	echo 'for 1 point of damage. (let "HP=HP-1").'
 	echo "You may avoid this damage if you have a sword"
 	echo "and wish to attack the penguin."
 	printf "\n"
