@@ -25,8 +25,11 @@ cat alpha beta gamma delta | base64 -d > robot
 
 base64:  invalid input
 
-I will attempt every combination and 
-document the one that succeeds.  I
+I have noticed that not every order thus will
+produce the same error, but the resulting 
+robot still does not work.  I will attempt 
+every combination and document the one that 
+succeeds.  I
 
 alpha beta delta gamma 
 alpha delta bet
