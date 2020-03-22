@@ -20,13 +20,13 @@ echo "The window is black, but there is luminescent writing."
 echo "Do you want to read the writing?"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    echo ".--------------------------------,"
    echo "|       Welcome to POSIX         |"
    echo "|   Enter your username:         |"
    echo "'--------------------------------'"
    read RESP
-   if [ $RESP = $USER ]; then
+   if [ "$RESP" = $USER ]; then
        echo '#!/bin/bash
        echo "Welcome, $USER, to your POSIX system."
        echo "You have learnt much, and now you have"

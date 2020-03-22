@@ -20,14 +20,14 @@ echo "Do you want to put the trinket back on the altar?"
 printf "\n"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    echo "You place the trinket upon the altar."
    echo "You feel a gentle breeze pass through the room."
    touch .bless
 else
    echo "Do you want to take the trinket for yourself?"
    read RESP
-   if [ $RESP = "y" -o $RESP = "Y" ]; then
+   if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
        echo "Remember to add the trinket to your inventory!"
        touch .curse
    else

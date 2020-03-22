@@ -21,7 +21,7 @@ no_crystal () {
    echo "Whatever it is, you cannot provide it now."
    echo "Walk with care."
 }
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
     if grep  --only-matching crystal <<< $I &> /dev/null; then
         echo "You place the ice crystal among the shards of glass."
         echo "The sword in your hands becomes cold."

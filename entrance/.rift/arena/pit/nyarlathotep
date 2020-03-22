@@ -130,7 +130,7 @@ printf "\n"
 echo "Are you armed? y/n"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
 
     if grep  --only-matching "sword" <<< $I &> /dev/null; then
         roll

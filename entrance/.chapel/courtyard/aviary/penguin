@@ -39,7 +39,7 @@ penguin_bite () {
 	printf "\n"
 	echo "Do you want to attack the penguin?"
 	read RESP
-	if [ $RESP = "y" -o $RESP = "Y" ]; then
+	if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
 	    echo "You attack the penguin, quickly doing away with it with one quick slash."
 	    echo "This draws the attention of the other penguins in the room."
 	    echo "They band together and rush at you. You fight your best."
@@ -68,13 +68,13 @@ printf "\n"
 echo "Do you get closer?"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    echo "You take a step forward, and the bird rushes"
    echo "toward you, its mouth open wide."
    echo "Do you happen to have a fish?"
    read RESP
 
-    if [ $RESP = "y" -o $RESP = "Y" ]; then
+    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
         if grep  --only-matching fish <<< $I; then
             echo "You toss the fish at the penguin,"
             echo "which catches the fish mid-air and"

@@ -30,7 +30,7 @@ echo "Do you want to approach the fountain?"
 printf "\n"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ]; then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    echo "The waters sparkle in the light of your gaze."
    echo "You feel drawn to it."
    if [ x$CURSE = "x" ]; then

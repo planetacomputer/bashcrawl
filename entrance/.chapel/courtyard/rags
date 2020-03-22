@@ -19,7 +19,7 @@ printf "\n"
 echo "Do you want to take the rags?"
 read RESP
 
-if [ $RESP = "y" -o $RESP = "Y" ];then
+if [ "$RESP" = "y" -o "$RESP" = "Y" ];then
     echo "As you take the rags from the floor, you find"
     echo "a salted fish, probably from the rations of"
     echo "the former owner of these rags."
