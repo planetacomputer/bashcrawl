@@ -494,7 +494,7 @@ if grep UP .direction &> /dev/null; then
 # it means they are applications.
 # Try this:
 #
-# ./box
+# ./display
 #
 # If you're not seeing the * after
 # this file name, you're probably
