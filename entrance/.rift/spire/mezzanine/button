@@ -424,7 +424,7 @@ fi
 # it means they are applications.
 # Try this:
 #
-# ./box
+# ./button
 #
 # If you're not seeing the * after
 # this file name, you're probably

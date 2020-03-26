@@ -27,9 +27,14 @@ base64:  invalid input
 
 I have noticed that not every order thus will
 produce the same error, but the resulting 
-robot still does not work.  I will attempt 
-every combination and document the one that 
-succeeds.  I
+robot still does not work.  I discovered another
+incantation that will tell me the robot is 
+assembled correctly:
+
+sha256sum -c sha256sums
+
+I will attempt every combination and document 
+the one that succeeds. 
 
 alpha beta delta gamma 
 alpha delta bet
