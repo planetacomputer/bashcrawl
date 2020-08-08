@@ -14,10 +14,13 @@
 # 
 
 gameover () {
-    echo "You see the corpse of a slain adventurer on the floor of the dungeon." > corpse
-    echo "You find the following items on the corpse:  " >> corpse
-    echo >> corpse
-    echo $I >> corpse
+    cat << EOF > corpse
+You see the corpse of a slain adventurer on the floor of the dungeon.
+You find the following items on the corpse:  
+
+$I
+
+EOF
     curr=`basename $PWD`
     while [ "$curr" != "entrance" ]; do
         pushd .. &> /dev/null
@@ -30,44 +33,61 @@ gameover () {
 }
 
 if [ "$0" = "./pieces" ]; then
-    echo "You sift through the pieces of a shattered statue."
-    echo
-    echo "You find nothing of interest in the statue's remains."
+    cat << EOF
+You sift through the pieces of a shattered statue.
+
+You find nothing of interest in the statue's remains.
+
+EOF
     exit 1
 fi
 
-echo "A rugged statue stands in the corner of the room."
-echo "Do you approach it?"
+cat << EOF
+A rugged statue stands in the corner of the room.
+
+EOF
+printf "Do you approach it? "
+
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-   echo "The statue springs to life, rumbling:"
-   echo '"WHO DARES INTRUDE UPON THE CHAMBER OF SPIRITS?"'
-   printf "\n" 
-   echo "It thrusts a fist at you, hitting you for 5 damage."
-   echo "Deduct 5 from your HP variable:"
-   echo 'let "HP=HP-5"'
+    cat << EOF
+The statue springs to life, rumbling:
+
+WHO DARES INTRUDE UPON THE CHAMBER OF SPIRITS?
+
+It thrusts a fist at you, hitting you for 5 damage.
+Deduct 5 from your HP variable:
+
+let "HP=HP-5"
+
+EOF
    let HP=HP-5
    export HP
    if [ "$HP" -le 0 ]; then
-        echo "You have been slain by the statue."
-        echo
-        echo "GAME OVER!"
+       cat << EOF
+You have been slain by the statue.
+
+GAME OVER!
+
+EOF
         gameover
         exit 1
    fi
    perl -pe 's/coins/diamonds/' -i ./treasure
    printf "\n"
-   echo "Do you have a sword?"
+   printf "Do you have a sword? "
    read RESP
    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-       if grep  --only-matching 'sword' <<< $I &> /dev/null; then
+       if grep  --quiet --only-matching 'sword' <<< $I; then
            echo "You slay the statue!"
            mv statue pieces
        else
-           printf "\n"
-           echo "No you don't!"
-           echo 'Run!'
+           cat << EOF
+No you don't!
+Run!
+
+EOF
            rm treasure
            rm spell
       fi
@@ -75,10 +95,13 @@ if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
        echo "Run!"
    fi
 else
-    echo "You cautiously avoid the statue,"
-    echo "recalling stories of living stone"
-    echo "lying in wait, deep within haunted catacombs."
-   printf "\n"
+    cat << EOF
+You cautiously avoid the statue,
+recalling stories of living stone
+lying in wait, deep within haunted catacombs.
+
+EOF
+
 fi
 
 
