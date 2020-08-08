@@ -12,33 +12,44 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 #
-echo "You have found a potion bottle of swirling"
-echo "green liquid. Do you want to drink it?"
-printf "\n"
+cat << EOF 
+You have found a potion bottle of swirling
+green liquid. Do you want to drink it?
+
+EOF
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-   echo "The taste of a rustic green plant fills your mouth."
-   echo "It warms and strengthens you."
-   printf "\n" 
-   echo "Create a variable for your health points (HP)."
-   echo "You have 15 HP:"
-   echo "$ export HP=15"
-   printf "\n"
+   cat << EOF 
+The taste of a rustic green plant fills your mouth.
+It warms and strengthens you."
+
+Create a variable for your health points (HP).
+You have 15 HP:"
+
+export HP=15"
+
+EOF
 else
-   echo "You weren't born yestermorn;"
-   echo "this potion is probably poison."
-   printf "\n"   
-   echo "Create a variable for your health points (HP)."
-   echo "You have 10 HP:"
-   echo "$ export HP=10"
-   printf "\n"
+    cat << EOF
+You weren't born yestermorn;
+this potion is probably poison.
+
+Create a variable for your health points (HP).
+You have 10 HP:
+
+export HP=10
+
+EOF
+
 fi
 
-echo "You can check your health at any time:"
-printf "\n"
-echo "echo \$HP"
-printf "\n"
+cat << EOF
+You can check your health at any time:"
+
+echo echo \$HP
+
+EOF
 mv ../../.chapel ../../chapel 2>/dev/null
 mv ../../.vault ../../vault 2>/dev/null
 mv ../../.scrap ../../scrap 2>/dev/null
