@@ -1,0 +1,298 @@
+#!/bin/bash
+#
+# If you are reading this, you have wandered out of bounds
+# and are reading the code that drives the game.
+#
+#                    Congratulations!
+#
+# Learning Linux is all about curiosity, so read this code and see
+# if you can figure out what it does.
+#
+# When you're ready to continue playing the game, though, stick to
+# the scrolls. If you're stuck, go to Gitlab and create an issue.
+# We're happy to provide hints.
+#
+
+random_page () {
+
+    # For each spell added, increase total_spells by one (1)
+    # So, the number of the scrolls will be 0 through n - 1.  If
+    # there are five scrolls in the tome, then they will be 
+    # numbered from 0 through 4.  The operation to choose the 
+    # current spell will pick a random number, 0 through n - 1.
+    # That spell will be displayed.
+    total_spells=2
+    curr_spell=$(( ${RANDOM} % ${total_spells} ))
+
+    case in ${curr_spell}
+        0)
+            cat << EOF
+View the world in color!
+
+If you have a modern, color terminal, you can view
+the output of the ls command in color!  This will
+still be a valid command if you don't have a color
+terminal, you just won't see colors.  Try this:
+
+alias ls='ls -F --color=auto'
+
+rooms (directories), scrolls (text files), and
+encounters (executable files) should each have
+different colors.  Depending on the \$LS_COLORS 
+variable, many other files will have different 
+colors too!  
+
+You can read more about colors by consulting the 
+"dircolors" manual.  To read more, type this spell:
+
+man dircolors
+
+In the manual, you can type 'q' (without quotes) to
+exit the manual page.
+
+EOF
+        ;;
+        1)
+            cat << EOF
+Keep track of where you've been!
+
+Instead of using "cd <room>" and "cd .." to 
+navigate the catacombs, you can keep track of the
+rooms you've been in by using "pushd" and "popd". 
+"pushd", as the name implies, pushes the directory you
+pass as the argument onto the room (directory) stack.
+Use it like so:
+
+pushd <room>
+
+The angle brackets mean you specify the room (directory>,
+you don't type them.  To see your current stack, type the
+following command:
+
+dirs
+
+This will print out the list of directories on the stack. 
+The data structure is a known as a stack, because you only
+add or remove elements from the top of the stack, it is also
+known as a LIFO (Last In, First Out) data structure.  To
+remove the top room (directory) from the stack, and change
+directory to the new directory on the stack, use "popd", like
+so:
+
+popd
+
+This will remove the top element of the stack ("pop" it off the
+stack), and change directory to the next top of the stack.
+
+Here's an example.  You're in a room (directory) called 
+~/bashcrawl/entrance/field/, with the following
+other rooms:
+
+cemetary/ jail/ oubliette/
+
+To change directory to the cemetary, and place it on the directory
+stack, use this:
+
+pushd cemetary
+
+Now, the directory stack (output of the "dirs" command), shows this:
+
+~/bashcrawl/entrance/field/cemetary ~/bashcrawl/entrance/field
+
+To go back to the field, run "popd".  The directory stack will return to
+~/bashcrawl/entrance/field.  You can mix and match "pushd" with "cd", and
+only the directories you add with "pushd" will be on the stack.  This is
+useful for returning to another directory, after exploring the rest of
+the dungeon.
+
+Good luck!
+
+EOF
+        ;;
+    # Add new spells here
+    esac
+}
+cat << EOF
+
+You see a large tome on the table, open
+to a page in the middle of the book.
+
+EOF
+
+printf "Do you read it? "
+read RESP
+
+if [ "${RESP}" = "y" -o "${RESP}" = "Y" ]; then
+    cat << EOF
+
+The tome appears to be a book of spells.  Here is the 
+first spell:
+
+EOF
+
+
+do
+    random_page
+
+    printf "Do you want to read another spell? "
+    read RESP
+done while [ "${RESP}" = 'y' -o "${RESP}" = 'Y' ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Hmm, that didn't work.
+# Remember, when files end in a * it means they are 
+# applications (commands). Trey this:
+#
+# ./treasure
+
