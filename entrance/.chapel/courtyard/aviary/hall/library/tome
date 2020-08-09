@@ -24,7 +24,7 @@ random_page () {
     total_spells=2
     curr_spell=$(( ${RANDOM} % ${total_spells} ))
 
-    case in ${curr_spell}
+    case ${curr_spell} in
         0)
             cat << EOF
 View the world in color!
@@ -130,14 +130,13 @@ first spell:
 
 EOF
 
-
-do
-    random_page
-
-    printf "Do you want to read another spell? "
-    read RESP
-done while [ "${RESP}" = 'y' -o "${RESP}" = 'Y' ];
-
+    while [ "${RESP}" = 'y' -o "${RESP}" = 'Y' ]; do
+        random_page
+    
+        printf "Do you want to read another spell? "
+        read RESP
+    done 
+fi
 
 
 
