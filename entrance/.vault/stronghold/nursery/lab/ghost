@@ -45,7 +45,7 @@ roll() {
     echo "The monster rolled " $MONSTER
     echo "You rolled " $NUM
     
-    if [ -e ../../../glass/.bless ]; then
+    if [ -e ../../../.bless ]; then
 	let "NUM=NUM+2"
 	echo "+2 bonus from a mysterious wintry patron!"
     fi
@@ -104,7 +104,7 @@ EOF
 Your sword swings harmlessly through the air.  You take 5
 points damage. Deduct this from your HP variable:  
 
-let "HP=HP-5"
+let HP=HP-5
 
 EOF
         let HP=HP-5
@@ -120,6 +120,7 @@ EOF
             exit 1
         fi
 	    roll
+        resolve
     fi
 }
 
