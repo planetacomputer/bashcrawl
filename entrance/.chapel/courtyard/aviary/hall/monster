@@ -31,7 +31,7 @@ EOF
     $SHELL
 }
 roll() {
-    print "Enter a number:  "
+    printf "Enter a number:  "
     read NUM
     ALPHA=$RANDOM
     OMEGA=$RANDOM
