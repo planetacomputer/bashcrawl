@@ -6,7 +6,10 @@
 #
 # ./treasure
 # 
-# The . means *don't move*, and the name of the script makes the code run.
+# The . (dot) means *don't move*, and the name of the 
+# script makes the code run.  This is known as a 
+# relative path, and the . means the current room
+# (directory).
 # 
 # You may have left treasure in the previous room.
 # Go back to a previous directory with two dots,
