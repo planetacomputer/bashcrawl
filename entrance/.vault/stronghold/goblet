@@ -14,37 +14,45 @@
 # We're happy to provide hints.
 # 
 if [[ -e orb1 && -e orb2 && -e orb3 ]]; then
-    echo "You have freed the goblet's material form."
-    echo "Add 'goblet' to your inventory."
+    cat << EOF
+You have freed the goblet's material form.  Add 'goblet' to
+your inventory.
+
+EOF
     exit
 else 
-    echo "You try to grasp the faintly glowing goblet,"
-    echo "but it passes through your fingers."
+    cat << EOF
+You try to grasp the faintly glowing goblet, but it passes
+through your fingers.
+
+EOF
+
 fi
 
-printf "\n"
-echo "Are you stuck? Do you need a hint? y/n"
+printf "Are you stuck? Do you need a hint? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
- echo "Try searching opensource.com for"
- echo "hints on how to copy files."
- printf "\n"
- echo "Still stuck? Do you need the answer? y/n"
- read RESP
+    cat << EOF
+Try searching opensource.com for hints on how to copy files.
 
- if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-     echo "The cp command copies one file to another."
-     echo "Run this command:"
-     echo "$ cp orb1 orb2"
-     echo "$ cp orb1 orb3"
-     printf "\n"
-     echo "And then run this goblet script again"
-     echo "for confirmation."
- fi
+EOF
+    printf "Still stuck? Do you need the answer? y/n  "
+    read RESP
+
+    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
+        cat << EOF
+The cp command copies one file to another. Run these
+commands:
+
+cp orb1 orb2
+cp orb1 orb3
+
+And then run this goblet script again for confirmation.
+
+EOF
+    fi
 fi
-
-printf "\n"
 
 
 
