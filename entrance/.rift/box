@@ -42,11 +42,11 @@ You have found magickal armour.  Add it to your inventory.
 
 eof
 touch .armour
-chmod +x armour
 touch .bless
 
 EOF
-       echo "You feel magic in the air."
+        chmod +x armour
+        echo "You feel magic in the air."
    fi
 else
     cat << EOF
