@@ -46,10 +46,13 @@ roll() {
 }
 
 gameover () {
-    echo "You see the corpse of a slain adventurer on the floor of the dungeon." > corpse
-    echo "You find the following items on the corpse:  " >> corpse
-    echo >> corpse
-    echo $I >> corpse
+    cat << EOF > corpse
+You see the corpse of a slain adventurer on the floor of the
+dungeon.  You find the following items on the corpse:  
+
+${I}
+
+EOF
     curr=`basename $PWD`
     while [ "$curr" != "entrance" ]; do
         pushd .. &> /dev/null
@@ -62,88 +65,117 @@ gameover () {
 }
 
 flee () {
-    echo "You turn to flee but find that you cannot."
-    echo "You spend 1000 years as a mindless servant to the crawling chaos."
-    echo "When you awaken, you may attempt to fight for your liberation."
-    printf "\n"
+    cat << EOF
+You turn to flee but find that you cannot.  You spend 1000
+years as a mindless servant to the crawling chaos.  When you
+awaken, you may attempt to fight for your liberation.  
+
+EOF
 }
 
 resolve() {
     if [[ $MONSTER -eq $NUM ]]; then
-	echo "You dodge an attack, but you miss your mark as a result."
-	echo "Roll again..."
+        cat << EOF
+You dodge an attack, but you miss your mark as a result.
+Roll again...
+
+EOF
 	roll
     fi
     
     if [[ $MONSTER -lt $NUM ]]; then
-       echo "A hit! A palpable hit!"
-       echo "You have vanquished the elder god of chaos!"
+        cat << EOF
+A hit! A palpable hit!  You have vanquished the elder god of
+chaos!
 
-       echo '#!/bin/bash
-       if ! grep  --only-matching hair <<< $I &> /dev/null; then
-           echo "You have found a lock of the **hair** of a god!"
-           echo "Add it to your inventory."
-       else 
-           echo "This treasure has already been taken."
-       fi' > treasure
+EOF
+       cat << EOF > treasure
+#!/bin/bash
+if ! grep  --quiet --only-matching hair <<< \$I; then
+    cat << eof
+You have found a lock of the **hair** of a god!  Add it to your inventory.
+
+eof
+else 
+    echo "This treasure has already been taken."
+fi
+
+EOF
        chmod +x treasure
-       echo '#!/bin/bash
-       if ! grep  --only-matching bracelet <<< $I &> /dev/null; then
-           echo "You have found an enchanted *bracelet* of chaotic necromancy!"
-           echo "Add it to your inventory." 
-       else
-           echo "This treasure has already been taken."
-       fi' > platinum
-    chmod +x platinum
-       cat << EOF > end 
-You have reached the end of the game. 
-You know enough Bash now to use it for every day activities.
-Practice makes perfect, so be sure to use it often.
-For continued Bash tips, visit opensource.com often.
-And eventually, we hope to see you contribute
-your own dungeon rooms to Bash crawl!
+       cat << EOF > platinum
+#!/bin/bash
+if ! grep  --quiet --only-matching bracelet <<< \$I; then
+    cat << eof
+You have found an enchanted *bracelet* of chaotic
+necromancy!  Add it to your inventory.
+
+eof
+else
+    echo "This treasure has already been taken."
+fi
+
+EOF
+        chmod +x platinum
+        cat << EOF > end 
+You have reached the end of the game.  You know enough Bash
+now to use it for every day activities.  Practice makes
+perfect, so be sure to use it often.  For continued Bash
+tips, visit opensource.com often.
+
+And eventually, we hope to see you contribute your own
+dungeon rooms to Bashcrawl!
+
 EOF
 
     else
-    	echo "Your sword swings harmlessly through the air."
-    	echo "You take 10 points damage from your foe. Deduct this from your HP."
-    	echo 'let "HP=HP-10"'
+        cat << EOF
+Your sword swings harmlessly through the air.  You take 10
+points damage from your foe. Deduct this from your HP.  
+
+let "HP=HP-10"
+
+EOF
         let HP=HP-10
         export HP
         if [ "$HP" -le 0 ]; then
-            echo "The elder god of chaos consumes your body and soul."
-            echo
-            echo "You have been slain."
-            echo
-            echo "GAME OVER!"
+            cat << EOF
+The elder god of chaos consumes your body and soul.  You
+have been slain.
+
+GAME OVER!
+
+EOF
             gameover
             exit 1
         fi
-	    printf "\n"
 	    roll
     fi
 }
 
-echo "In the blink of an eye, Nyarlathotep is standing before you."
-echo "From its hands emanate black necrotic rays, and your mind screams."
-printf "\n"
-echo "Are you armed? y/n"
+cat << EOF
+In the blink of an eye, Nyarlathotep is standing before you.
+From its hands emanate black necrotic rays, and your mind
+screams.
+
+EOF
+printf "Are you armed? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
 
-    if grep  --only-matching "sword" <<< $I &> /dev/null; then
+    if grep  --quiet --only-matching "sword" <<< $I; then
         roll
     else
-        echo "Oh, no!  You have lost your blade!"
-        echo "Nyarlathotep, the elder god of chaos, senses your weakness."
-        echo
+        cat << EOF
+Oh, no!  You have lost your blade!  Nyarlathotep, the elder
+god of chaos, senses your weakness.  
+
+EOF
         flee
     fi
 else
     flee
 fi
-printf "\n"
 
 
 
