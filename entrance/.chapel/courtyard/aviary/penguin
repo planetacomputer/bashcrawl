@@ -104,7 +104,7 @@ mid-air and gobbles it down.
 Don't forget to remove the fish from your inventory.  Try
 the following command:
 
-export I=\$(sed "s/fish//; s/,,/,/" <<< $I)
+export I=\$(sed "s/fish//; s/,,/,/" <<< \$I)
 
 EOF
         else
