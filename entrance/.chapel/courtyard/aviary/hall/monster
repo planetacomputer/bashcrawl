@@ -90,7 +90,7 @@ EOF
 Your attack is deflected off the monster's leathery flesh.
 You take 5 points damage. Deduct this from your HP.
 
-let "HP=HP-5"
+let HP=HP-5
 
 EOF
         let HP=HP-5
@@ -122,7 +122,7 @@ cat << EOF
 A hulking three-legged beast, with a mouth full of fangs and
 a barbed tail and 8 arms, lumbers toward you.
 
-you have a sword, you can attack.  Otherwise, you should
+If you have a sword, you can attack.  Otherwise, you should
 run.  
 
 EOF
