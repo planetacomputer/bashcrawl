@@ -21,22 +21,22 @@ read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    cat << EOF 
-The taste of a rustic green plant fills your mouth.
-It warms and strengthens you."
+The taste of a rustic green plant fills your mouth.  It
+warms and strengthens you.
 
-Create a variable for your health points (HP).
-You have 15 HP:"
+Create a variable for your health points (HP).  You have
+15HP:
 
-export HP=15"
+export HP=15
 
 EOF
 else
     cat << EOF
-You weren't born yestermorn;
-this potion is probably poison.
+You weren't born yestermorn.  This potion is probably
+poison.  
 
-Create a variable for your health points (HP).
-You have 10 HP:
+Create a variable for your health points (HP).  You have
+10HP:
 
 export HP=10
 
@@ -45,9 +45,9 @@ EOF
 fi
 
 cat << EOF
-You can check your health at any time:"
+You can check your health at any time:
 
-echo echo \$HP
+echo \$HP
 
 EOF
 mv ../../.chapel ../../chapel 2>/dev/null
