@@ -15,31 +15,31 @@
 cat << EOF
 Runes, the language of the ancient mystics that once ruled
 this land, are inscribed upon the western wall.
-Do you want to read them?
 
 EOF
+printf "Do you want to read them? "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
     cat << EOF
-You recall the lessons of Caitlyn the Green,
-who taught you these ancient letters.
+You recall the lessons of Caitlyn the Green, who taught you
+these ancient letters.  
 
-The runes are instructions on how to summon
-a portal that will allow you to walk through
-an invisible door contained in the wall.
+The runes are instructions on how to summon a portal that
+will allow you to walk through an invisible door contained
+in the wall.
 
-In Bash, a symbolic link is an *shortcut*
-to another file or directory.
-Create one from this room to the adjacent one:
+In Bash, a symbolic link (symlink) is a *shortcut* to
+another file or directory.  Create one from this room to the
+adjacent one:
 
 ln -fs ../../../chapel/courtyard/aviary/hall portal
 
 EOF
 else
     cat << EOF
-You decide it is probably best to leave
-magickal enscriptions as they are.
+You decide it is probably best to leave magickal
+inscriptions as they are.
 
 EOF
 
