@@ -116,6 +116,7 @@ Good luck!
 EOF
         ;;
     2)
+        [ -f ../monster ] && monster="monster" || monster="carcass"
         cat << EOF
 
 Map the entire dungeon!
@@ -138,7 +139,7 @@ You should see this:
 ├── library/
 │   ├── scroll
 │   └── tome*
-└── monster*
+└── ${monster}*
 
 The "tree" command takes many of the same options as the
 "ls" command, including colors and viewing hidden files.  Go
