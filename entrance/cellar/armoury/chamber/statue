@@ -15,8 +15,8 @@
 
 gameover () {
     cat << EOF > corpse
-You see the corpse of a slain adventurer on the floor of the dungeon.
-You find the following items on the corpse:  
+You see the corpse of a slain adventurer on the floor of the
+dungeon.  You find the following items on the corpse:  
 
 $I
 
@@ -75,7 +75,6 @@ EOF
         exit 1
    fi
    perl -pe 's/coins/diamonds/' -i ./treasure
-   printf "\n"
    printf "Do you have a sword? "
    read RESP
    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
@@ -84,8 +83,7 @@ EOF
            mv statue pieces
        else
            cat << EOF
-No you don't!
-Run!
+No you don't!  Run!
 
 EOF
            rm treasure
@@ -96,9 +94,8 @@ EOF
    fi
 else
     cat << EOF
-You cautiously avoid the statue,
-recalling stories of living stone
-lying in wait, deep within haunted catacombs.
+You cautiously avoid the statue, recalling stories of living
+stone lying in wait, deep within haunted catacombs.
 
 EOF
 
