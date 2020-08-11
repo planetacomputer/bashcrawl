@@ -16,13 +16,13 @@ cat << EOF
 A white crystal, forged by the Queen of Winter, on the
 frosty ground.
 
-You can prefix this item to your inventory:"
+You can prefix this item to your inventory:
 
-I=crystal,\$I"
+I=crystal,\$I
 
-Remember, you can check your inventory:"
+Remember, you can check your inventory:
 
-echo \$I"
+echo \$I
 
 EOF
 #
