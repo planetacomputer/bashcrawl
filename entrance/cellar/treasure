@@ -14,19 +14,20 @@
 #
 
 if ! grep  --only-matching amulet <<< $I &> /dev/null; then
-    printf "\n"
-    echo "You have found an emerald **amulet**!"
-    printf "\n"
-    echo "To collect treasure, you must have a variable to hold your inventory."
-    printf "\n"
-    echo "Create a variable and add your treasure to it like this:"
-    printf "\n"
-    echo "export I=amulet,\$I"
-    printf "\n"
-    echo "You can always check your wealth with this command:"
-    printf "\n"
-    echo "echo \$I"
-    printf "\n"
+    cat << EOF
+You have found an emerald **amulet**!"
+
+To collect treasure, you must have a variable to hold your inventory.
+
+Create a variable and add your treasure to it like this:
+
+export I=amulet,\$I
+
+You can always check your wealth with this command:
+
+echo \$I
+
+EOF
     mv ../.chapel ../chapel 2>/dev/null
     mv ../.vault ../vault 2>/dev/null
     mv ../.scrap ../scrap 2>/dev/null

@@ -12,26 +12,37 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 # 
-echo "Runes, the language of the ancient mystics that once ruled"
-echo "this land, are inscribed upon the western wall."
-echo "Do you want to read them?"
+cat << EOF
+Runes, the language of the ancient mystics that once ruled
+this land, are inscribed upon the western wall.
+
+EOF
+printf "Do you want to read them? "
 read RESP
+
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-   echo "You recall the lessons of Caitlyn the Green,"
-   echo "who taught you these ancient letters."
-   printf "\n"
-   echo "The runes are instructions on how to summon"
-   echo "a portal that will allow you to walk through"
-   echo "an invisible door contained in the wall."
-   printf "\n"
-   echo "In Bash, a symlink is an *alias* or a *shortcut*"
-   echo "to another file or directory."
-   echo "Create one from this room to the adjacent one:"
-   echo "ln -f -s `pwd`/../../../chapel/courtyard/aviary/hall portal"
-   printf "\n"
+    cat << EOF
+You recall the lessons of Caitlyn the Green, who taught you
+these ancient letters.  
+
+The runes are instructions on how to summon a portal that
+will allow you to walk through an invisible door contained
+in the wall.
+
+In Bash, a symbolic link (symlink) is a *shortcut* to
+another file or directory.  Create one from this room to the
+adjacent one:
+
+ln -fs ../../../chapel/courtyard/aviary/hall portal
+
+EOF
 else
-   echo "You decide it is probably best to leave"
-   echo "magickal enscriptions as they are."
+    cat << EOF
+You decide it is probably best to leave magickal
+inscriptions as they are.
+
+EOF
+
 fi
 
 

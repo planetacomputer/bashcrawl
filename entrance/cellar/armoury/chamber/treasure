@@ -13,22 +13,24 @@
 # We're happy to provide hints.
 # 
 echo
-if ! grep  --only-matching coins <<< $I &> /dev/null; then
-    echo "You have found a stash of **coins**!"
-    echo "They are old and worn with age,"
-    echo "but they still gleam in the magical light"
-    echo "emanating from your eyes."
-    printf "\n"
-    echo "Prepend this item to your inventory:"
-    printf "\n"
-    echo '$ export I=coins,$I'
-    printf "\n"
-    echo "Remember, you can check your inventory:"
-    printf "\n"
-    echo 'echo $I'
-    printf "\n"
+if ! grep  --quiet --only-matching coins <<< $I; then
+    cat << EOF
+You have found a stash of **coins**!  They are old and worn
+with age,  but they still gleam in the magickal light
+eminating from your eyes.
+
+Prefix this item to your inventory:
+
+export I=coins,\$I
+
+Remember, you can check your inventory:
+
+echo \$I
+
+EOF
 else
     echo "This treasure has already been taken."
+    echo
 fi
 
 

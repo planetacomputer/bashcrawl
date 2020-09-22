@@ -60,44 +60,49 @@ countup () {
 	done
 }
 
-if grep UP .direction &> /dev/null; then
-    echo "You hear a slight whirring, and feel"
-    echo "a heaviness at your feet, with a vague,"
-    echo "disquieting sense of motion."
-    echo
-    echo "A magickal display reads:  "
-    echo
+if grep --quiet UP .direction; then
+    cat << EOF
+You hear a slight whirring, and feel a heaviness at your
+feet, with a vague, disquieting sense of motion.  
+
+A magickal display reads:  
+
+EOF
     countup
-    echo
-    echo
-    echo "The doors slide open, with nothing but"
-    echo "darkness beyond."
+    cat << EOF
+
+The doors slide open, with nothing but darkness beyond.
+
+EOF
     echo "DOWN" > .direction
     ln -sf .satellite door && \
         sleep 10 && \
         echo "The doors slide closed." && \
         rm door &> /dev/null && \
-        echo "DOWN" > .direction &
-        echo
-    else
-        echo "You hear a slight whirring, and feel"
-        echo "a lightness at your feet, with a vague,"
-        echo "disquieting sense of motion."
-        echo
-        echo "A magickal display reads:  "
-        echo
-        countdown
-        echo
-        echo
-        echo "UP" > .direction &
-        echo "The doors slide open, with nothing but"
-        echo "darkness beyond."
-            sleep 10 && \
-            ln -sf .. door && \
-            echo "The doors slide closed." && \
-            rm door &> /dev/null &
-        echo
-    fi
+    echo "DOWN" > .direction &
+    echo
+else
+    cat << EOF
+You hear a slight whirring, and feel a lightness at your
+feet, with a vague, disquieting sense of motion. 
+
+A magickal display reads:  
+
+EOF
+    countdown
+    echo
+    echo
+    echo "UP" > .direction &
+    cat << EOF
+The doors slide open, with nothing but darkness beyond.
+
+EOF
+    sleep 10 && \
+        ln -sf .. door && \
+        echo "The doors slide closed." && \
+        rm door &> /dev/null &
+    echo
+fi
 #
 #
 #

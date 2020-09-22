@@ -15,10 +15,13 @@
 
 
 gameover () {
-    echo "You see the corpse of a slain adventurer on the floor of the dungeon." > corpse
-    echo "You find the following items on the corpse:  " >> corpse
-    echo >> corpse
-    echo $I >> corpse
+    cat << EOF > corpse
+You see the corpse of a slain adventurer on the floor of the
+dungeon.  You find the following items on the corpse:  
+
+${I}
+
+EOF
     curr=`basename $PWD`
     while [ "$curr" != "entrance" ]; do
         pushd .. &> /dev/null
@@ -31,28 +34,41 @@ gameover () {
 }
 
 penguin_bite () {
-	echo "The penguin gnaws at your Bag of Holding, hoping for a morsel."
-	echo "Finding nothing, it takes a nip at your hand"
-	echo 'for 1 point of damage. (let "HP=HP-1").'
-	echo "You may avoid this damage if you have a sword"
-	echo "and wish to attack the penguin."
-	printf "\n"
-	echo "Do you want to attack the penguin?"
+    cat << EOF
+The penguin gnaws at your Bag of Holding, hoping for a
+morsel.  Finding nothing, it takes a nip at your hand for 1
+point of damage. (let "HP=HP-1").  You may avoid this damage
+if you have a sword and wish to attack the penguin.
+
+EOF
+printf "Do you want to attack the penguin? "
 	read RESP
 	if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-	    echo "You attack the penguin, quickly doing away with it with one quick slash."
-	    echo "This draws the attention of the other penguins in the room."
-	    echo "They band together and rush at you. You fight your best."
+        cat << EOF
+You attack the penguin, quickly doing away with it with one
+quick slash.  This draws the attention of the other penguins
+in the room.  They band together and rush at you. You fight
+your best.
+
+EOF
         let HP=HP-5
         export HP
         if [ "$HP" -le 0 ]; then
-            echo "The mob of penguins reduces your hit points to zero."
-            echo "You are slain by the mob."
+            cat << EOF
+The mob of penguins reduces your hit points to zero.  You
+are slain by the mob.
+
+EOF
             gameover
             exit 1
         else
-	        echo "But a mob of penguins does not tolerate oppression, and you soon find yourself sealed in a block of ice."
-	        echo "There you stay, perfectly preserved for 128 years. When you are thawed, you may continue your adventure."
+            cat << EOF
+But a mob of penguins does not tolerate oppression, and you
+soon find yourself sealed in a block of ice.  You stay,
+perfectly preserved for 128 years. When you are thawed, you
+may continue your adventure.
+
+EOF
         fi
 	else
         let HP=HP--
@@ -61,29 +77,37 @@ penguin_bite () {
 	fi
 }
 
-echo "One of the birds finally notices your presence."
-echo "It turns its head sideways, seemingly beckoning"
-echo "for you to come closer."
-printf "\n"
-echo "Do you get closer?"
+cat << EOF
+One of the birds finally notices your presence.  It turns
+its head sideways, seemingly beckoning for you to come
+closer.
+
+EOF
+printf "Do you get closer? "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-   echo "You take a step forward, and the bird rushes"
-   echo "toward you, its mouth open wide."
-   echo "Do you happen to have a fish?"
-   read RESP
+    cat << EOF
+You take a step forward, and the bird rushes toward you, its
+mouth open wide.  
+
+EOF
+    printf "Do you happen to have a fish? "
+    read RESP
 
     if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-        if grep  --only-matching fish <<< $I; then
-            echo "You toss the fish at the penguin,"
-            echo "which catches the fish mid-air and"
-            echo "gobbles it down."
-            echo
-            echo "Don't forget to remove the fish from your inventory."
-            echo "Try the following command:"
-            echo 
-            echo 'export I=`sed "s/fish//; s/,,/,/" <<< $I`'
+        if grep  --quiet --only-matching fish <<< $I; then
+            cat << EOF
+
+You toss the fish at the penguin,  which catches the fish
+mid-air and gobbles it down.
+
+Don't forget to remove the fish from your inventory.  Try
+the following command:
+
+export I=\$(sed "s/fish//; s/,,/,/" <<< \$I)
+
+EOF
         else
             echo "You don't have a fish!"
             echo
@@ -92,10 +116,13 @@ if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
    else
         penguin_bite
    fi
-   
 else
-   echo "You back away from the penguin carefully."
-   echo "It loses interest in you and waddles away."
+    cat << EOF
+You back away from the penguin carefully.  It loses interest
+in you and waddles away.
+
+EOF
+
 fi
 #
 #

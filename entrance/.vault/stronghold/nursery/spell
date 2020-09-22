@@ -13,24 +13,34 @@
 # We're happy to provide hints.
 #
 if [[ -e potion ]]; then
-   echo "You have summoned a potion from afar."
-   echo "You drink it quickly and feel a surge of strength."
-   echo "Add 5 HP to your score."
+    cat << EOF
+You have summoned a potion from afar.  You drink it quickly
+and feel a surge of strength.
+
+Add 5 HP to your score.
+
+EOF
 else
-   echo "A page from a druid's tome of incantations lies on the ground."
-   echo "It reveals to you how to summon a healing potion:"
-   printf "\n"
-   echo "# To find a file on your system, use the find command."
-   echo '# For example, to search this room: find . -name "potion"'
-   echo "# Once you've found a potion, copy it to this directory"
-   echo "# and run this spell script again."
-   printf "\n"
-   echo "There are no potions in this room."
-   echo "But try searching starting at the entrance."
-   printf "\n"
-   echo "Hint: use pwd to determine how many rooms (folders)"
-   echo "are between you and the entrance."
-   printf "\n"
+    cat << EOF
+A page from a druid's tome of incantations lies on the
+ground.  It reveals to you how to summon a healing potion:
+
+# To find a file on your system, use the find command.  For
+# example, to search this room: 
+
+find . -name "potion"
+
+# Once you've found a potion, copy it to this directory and
+# run this spell script again.
+
+There are no potions in this room.  But try searching
+starting at the entrance.
+
+Hint: use pwd to determine how many rooms (folders) are
+between you and the entrance.
+
+EOF
+
 fi
 
 

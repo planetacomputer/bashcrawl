@@ -13,10 +13,13 @@
 # We're happy to provide hints.
 #
 gameover () {
-    echo "You see the corpse of a slain adventurer on the floor of the dungeon." > corpse
-    echo "You find the following items on the corpse:  " >> corpse
-    echo >> corpse
-    echo $I >> corpse
+    cat << EOF > corpse
+You see the corpse of a slain adventurer on the floor of the
+dungeon.  You find the following items on the corpse: 
+
+${I}
+
+EOF
     curr=`basename $PWD`
     while [ "$curr" != "entrance" ]; do
         pushd .. &> /dev/null
@@ -28,7 +31,7 @@ gameover () {
     $SHELL
 }
 roll() {
-    echo "Enter a number."
+    printf "Enter a number:  "
     read NUM
     ALPHA=$RANDOM
     OMEGA=$RANDOM
@@ -44,70 +47,97 @@ roll() {
 }
 
 resolve() {
-    if ! grep  --only-matching 'sword' <<< $I &> /dev/null; then
-        echo "You do not have a sword!"
-        echo
-        echo "Your attacks will be less effective."
+    if ! grep  --quiet --only-matching 'sword' <<< $I; then
+        cat << EOF
+You do not have a sword!
+
+Your attacks will be less effective.
+
+EOF
         let NUM=NUM-10
     fi
     if [[ $MONSTER -eq $NUM ]]; then
-	echo "You each parry one another's attacks."
-	echo "Roll again..."
+        cat << EOF
+You each parry one another's attacks.  Roll again...
+
+EOF
 	roll
     fi
     
     if [[ $MONSTER -lt $NUM ]]; then
-       echo "A hit! A palpable hit!"
-       echo "You have slain the beast."
-       echo '#!/bin/bash
-             if ! grep  --only-matching crown <<< $I &> /dev/null; then
-                 echo "You have found a *crown*!" 
-                 echo "Add it to your inventory."
-             else
-                 echo "This treasure has already been taken."
-            fi' > treasure
-       chmod +x treasure
-       mv monster carcass
+        cat << EOF
+A hit! A palpable hit!  You have slain the beast.
+
+EOF
+        cat << EOF > treasure
+#!/bin/bash
+if ! grep  --quiet --only-matching crown <<< \$I; then
+    cat << eof
+You have found a **crown**!  Add it to your inventory.
+
+eof
+
+else
+    echo "This treasure has already been taken."
+fi 
+
+EOF
+        chmod +x treasure
+        mv monster carcass
     else
-	echo "Your attack is deflected off the monster's leathery flesh."
-	echo "You take 5 points damage. Deduct this from your HP."
-	echo 'let "HP=HP-5"'
-    let HP=HP-5
-    export HP
-    if [ "$HP" -le 0 ]; then
-        echo "You have been slain by the monster."
-        echo 
-        echo "GAME OVER!"
-        gameover
-        exit 1
-    fi
-	printf "\n"
+        cat << EOF
+
+Your attack is deflected off the monster's leathery flesh.
+You take 5 points damage. Deduct this from your HP.
+
+let HP=HP-5
+
+EOF
+        let HP=HP-5
+        export HP
+        if [ "$HP" -le 0 ]; then
+            cat << EOF
+You have been slain by the monster.  
+
+GAME OVER!
+
+EOF
+            gameover
+            exit 1
+        fi
 	roll
     fi
 }
 
 if [ "$0" = "./carcass" ]; then
-    echo "You find the carcass of a foul beast."
-    echo 
-    echo "Nothing of interest lies within its remains."
+    cat << EOF
+You find the carcass of a foul beast.  Nothing of interest
+lies within its remains.
+
+EOF
     exit 0
 fi
 
-echo "A hulking three-legged beast, with a mouth full of fangs"
-echo "and a barbed tail and 8 arms, lumbers toward you."
-printf "\n"
-echo "If you have a sword, you can attack."
-echo "Otherwise, you should run."
-echo "Do you want to attack? y/n"
+cat << EOF
+A hulking three-legged beast, with a mouth full of fangs and
+a barbed tail and 8 arms, lumbers toward you.
+
+If you have a sword, you can attack.  Otherwise, you should
+run.  
+
+EOF
+printf "Do you want to attack? "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ];then
     roll
 else
-    echo "You wisely turn and flee."
-    echo "Quickly cd to the previous directory."
+    cat << EOF
+You wisely turn and flee.  Quickly cd to the previous
+directory.
+
+EOF
 fi
-printf "\n"
 #
 #
 #

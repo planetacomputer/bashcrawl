@@ -12,20 +12,26 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 # 
-echo "Do you have an ice crystal?"
-printf "\n"
+printf "Do you have an ice crystal? y/n  "
 read RESP
 
 no_crystal () {
-   echo "You sense that the glass shards are searching for something."
-   echo "Whatever it is, you cannot provide it now."
-   echo "Walk with care."
+    cat << EOF
+You sense that the glass shards are searching for something.
+Whatever it is, you cannot provide it now.
+
+Walk with care.
+
+EOF
 }
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
-    if grep  --only-matching crystal <<< $I &> /dev/null; then
-        echo "You place the ice crystal among the shards of glass."
-        echo "The sword in your hands becomes cold."
-        echo "You feel the power of 1000 blizzards coursing through it."
+    if grep  --quiet --only-matching crystal <<< $I; then
+        cat << EOF
+You place the ice crystal among the shards of glass.  The
+sword in your hands becomes cold.  You feel the power of
+1000 blizzards coursing through it.
+
+EOF
         touch .bless
     else
         no_crystal

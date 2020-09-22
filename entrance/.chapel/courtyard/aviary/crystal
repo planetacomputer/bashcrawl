@@ -12,17 +12,19 @@
 # the scrolls. If you're stuck, go to Gitlab and create an issue.
 # We're happy to provide hints.
 #
-echo "A white crystal, forged by the Queen of Winter,"
-echo "lies on the frosty ground."
-printf "\n"
-echo "You can prepend this item to your inventory:"
-printf "\n"
-echo "$ export I=crystal,\$I"
-printf "\n"
-echo "Remember, you can check your inventory:"
-printf "\n"
-echo "echo \$I"
-printf "\n"
+cat << EOF
+A white crystal, forged by the Queen of Winter, on the
+frosty ground.
+
+You can prefix this item to your inventory:
+
+I=crystal,\$I
+
+Remember, you can check your inventory:
+
+echo \$I
+
+EOF
 #
 #
 #
