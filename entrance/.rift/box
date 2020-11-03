@@ -30,6 +30,7 @@ if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
 '--------------------------------'
 EOF
    read RESP
+
    if [ "$RESP" = "$USER" ]; then
        cat << EOF > armour
 #!/bin/bash
