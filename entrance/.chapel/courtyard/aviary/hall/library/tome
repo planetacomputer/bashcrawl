@@ -67,7 +67,7 @@ Use it like so:
 
 pushd <room>
 
-The angle brackets mean you specify the room (directory>,
+The angle brackets mean you specify the room (directory),
 you don't type the angle brackets.  To see your current
 stack, type the following command:
 
@@ -241,7 +241,7 @@ tmux session with the following command:
 tmux attach -t <session_name>
 
 tmux has a complete configuration language, which is by
-default stored in ~/.tmux.conf.  You can set up aribtrary
+default stored in ~/.tmux.conf.  You can set up arbitrary
 keystrokes in the configuration file, to make tmux behave
 however you want.  The limit is your imagination!
 
