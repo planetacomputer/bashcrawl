@@ -32,6 +32,8 @@ EOF
     $SHELL
 }
 
+# this runs after the statue has been "destroyed"
+# and this file has been renamed to 'pieces'
 if [ "$0" = "./pieces" ]; then
     cat << EOF
 You sift through the pieces of a shattered statue.
@@ -42,6 +44,7 @@ EOF
     exit 1
 fi
 
+# start the statue encounter
 cat << EOF
 A rugged statue stands in the corner of the room.
 
@@ -57,15 +60,14 @@ The statue springs to life, rumbling:
 WHO DARES INTRUDE UPON THE CHAMBER OF SPIRITS?
 
 It thrusts a fist at you, hitting you for 5 damage.
-Deduct 5 from your HP variable:
-
-let "HP=HP-5"
 
 EOF
-   let HP=HP-5
-   export HP
-   if [ "$HP" -le 0 ]; then
-       cat << EOF
+
+    # this does not change the user's HP,
+    # it only calculates it after damage
+    let "HP=HP-5"
+    if [ "$HP" -le 0 ]; then
+        cat << EOF
 You have been slain by the statue.
 
 GAME OVER!
@@ -73,24 +75,44 @@ GAME OVER!
 EOF
         gameover
         exit 1
-   fi
-   perl -pe 's/coins/diamonds/' -i ./treasure
-   printf "Do you have a sword? "
-   read RESP
-   if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
+    fi
+
+    perl -pe 's/coins/diamonds/' -i ./treasure
+    printf "Do you have a sword? "
+    read RESP
+    if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
        if grep  --quiet --only-matching 'sword' <<< $I; then
-           echo "You slay the statue!"
+           cat <<EOF
+You strike the statue and it breaks to pieces!
+
+However, you have taken damage.
+Deduct 5 from your HP variable:
+
+let "HP=HP-5"
+
+EOF
            mv statue pieces
        else
            cat << EOF
 No you don't!  Run!
+You have taken damage from the animated statue.
+Deduct 5 from your HP variable:
+
+let "HP=HP-5"
 
 EOF
            rm treasure
            rm spell
       fi
-   else
-       echo "Run!"
+    else
+        cat <<EOF
+Run!
+You have taken damage from the animated statue.
+Deduct 5 from your HP variable:
+
+let "HP=HP-5"
+
+EOF
    fi
 else
     cat << EOF
