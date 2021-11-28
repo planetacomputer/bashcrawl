@@ -38,7 +38,7 @@ ln -fs ../../../chapel/courtyard/aviary/hall portal
 EOF
 else
     cat << EOF
-You decide it is probably best to leave magickal
+You decide it is probably best to leave magical
 inscriptions as they are.
 
 EOF

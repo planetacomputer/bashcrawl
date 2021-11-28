@@ -39,7 +39,7 @@ Welcome, ${USER}, to your POSIX system.  You have learnt much,
 and now you have the basic knowledge you need to become a
 truly powerful wizard.
 
-You have found magickal armour.  Add it to your inventory.
+You have found magical armour.  Add it to your inventory.
 
 eof
 touch .armour
