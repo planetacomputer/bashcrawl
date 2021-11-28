@@ -17,7 +17,7 @@ Runes, the language of the ancient mystics that once ruled
 this land, are inscribed upon the western wall.
 
 EOF
-printf "Do you want to read them? "
+printf "Do you want to read them? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then

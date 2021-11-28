@@ -19,7 +19,7 @@ There is a small trinket on the ground.  It looks religious
 in nature.
 
 EOF
-printf "Do you want to put the trinket back on the altar? "
+printf "Do you want to put the trinket back on the altar? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
@@ -30,7 +30,7 @@ breeze pass through the room.
 EOF
     touch .bless
 else
-    printf "Do you want to take the trinket for yourself? "
+    printf "Do you want to take the trinket for yourself? y/n  "
     read RESP
     if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
         echo "Remember to add the trinket to your inventory!"

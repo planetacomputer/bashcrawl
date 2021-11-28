@@ -126,7 +126,7 @@ If you have a sword, you can attack.  Otherwise, you should
 run.  
 
 EOF
-printf "Do you want to attack? "
+printf "Do you want to attack? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ];then

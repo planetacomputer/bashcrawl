@@ -49,7 +49,7 @@ cat << EOF
 A rugged statue stands in the corner of the room.
 
 EOF
-printf "Do you approach it? "
+printf "Do you approach it? y/n  "
 
 read RESP
 
@@ -78,7 +78,7 @@ EOF
     fi
 
     perl -pe 's/coins/diamonds/' -i ./treasure
-    printf "Do you have a sword? "
+    printf "Do you have a sword? y/n  "
     read RESP
     if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
        if grep  --quiet --only-matching 'sword' <<< $I; then

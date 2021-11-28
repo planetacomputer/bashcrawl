@@ -41,7 +41,7 @@ point of damage. (let "HP=HP-1").  You may avoid this damage
 if you have a sword and wish to attack the penguin.
 
 EOF
-printf "Do you want to attack the penguin? "
+printf "Do you want to attack the penguin? y/n  "
 	read RESP
 	if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
         cat << EOF
@@ -83,7 +83,7 @@ its head sideways, seemingly beckoning for you to come
 closer.
 
 EOF
-printf "Do you get closer? "
+printf "Do you get closer? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
@@ -92,7 +92,7 @@ You take a step forward, and the bird rushes toward you, its
 mouth open wide.  
 
 EOF
-    printf "Do you happen to have a fish? "
+    printf "Do you happen to have a fish? y/n  "
     read RESP
 
     if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then
