@@ -16,7 +16,7 @@ echo
 if ! grep  --quiet --only-matching coins <<< $I; then
     cat << EOF
 You have found a stash of **coins**!  They are old and worn
-with age,  but they still gleam in the magical light
+with age,  but they still gleam in the magickal light
 emanating from your eyes.
 
 Prefix this item to your inventory:
