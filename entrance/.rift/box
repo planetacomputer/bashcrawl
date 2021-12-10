@@ -18,7 +18,7 @@ illuminated from within.  There is a window in the box. The
 window is black, but there is luminescent writing.
 
 EOF
-printf "Do you want to read the writing? "
+printf "Do you want to read the writing? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then

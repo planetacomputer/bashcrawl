@@ -14,7 +14,7 @@
 #
 cat << EOF 
 You have found a potion bottle of swirling
-green liquid. Do you want to drink it?
+green liquid. Do you want to drink it?  y/n
 
 EOF
 read RESP

@@ -28,7 +28,7 @@ EOF
 
 CURSE=`find .. -type f -name ".curse"`
 
-printf "Do you want to approach the fountain? "
+printf "Do you want to approach the fountain? y/n  "
 read RESP
 
 if [ "$RESP" = "y" -o "$RESP" = "Y" ]; then

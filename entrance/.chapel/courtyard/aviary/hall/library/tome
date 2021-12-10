@@ -317,7 +317,7 @@ to a page in the middle of the book.
 
 EOF
 
-printf "Do you read it? "
+printf "Do you read it? y/n  "
 read RESP
 
 if [ "${RESP}" = "y" -o "${RESP}" = "Y" ]; then
@@ -331,7 +331,7 @@ EOF
     while [ "${RESP}" = 'y' -o "${RESP}" = 'Y' ]; do
         random_page
     
-        printf "Do you want to read another spell? "
+        printf "Do you want to read another spell? y/n  "
         read RESP
     done 
 fi

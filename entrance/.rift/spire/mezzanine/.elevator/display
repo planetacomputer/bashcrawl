@@ -65,7 +65,7 @@ if grep --quiet UP .direction; then
 You hear a slight whirring, and feel a heaviness at your
 feet, with a vague, disquieting sense of motion.  
 
-A magickal display reads:  
+A magickal display reads:
 
 EOF
     countup
@@ -86,7 +86,7 @@ else
 You hear a slight whirring, and feel a lightness at your
 feet, with a vague, disquieting sense of motion. 
 
-A magickal display reads:  
+A magickal display reads:
 
 EOF
     countdown

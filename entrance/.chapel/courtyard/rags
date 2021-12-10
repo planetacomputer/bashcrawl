@@ -18,7 +18,7 @@ age, and probably fell off of some poor adventurer.
 
 EOF
 
-printf "Do you want to take the rags? "
+printf "Do you want to take the rags? y/n  "
 
 read RESP
 
